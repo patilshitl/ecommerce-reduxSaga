@@ -11,11 +11,11 @@ function ProductCard() {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
+        
+      </Card.Body>
+      <Card.Footer className='d-flex align-items-center justify-content-between'>
         <Button variant="primary">Add to Cart</Button>
         <Button variant="primary">Add to Wishlist</Button>
-      </Card.Body>
-      <Card.Footer>
-        
       </Card.Footer>
     </Card>
   );
