@@ -1,7 +1,20 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useDispatch } from 'react-redux';
+import { fetchProductRequest } from '../redux/ProductSlice';
+import { useEffect } from 'react';
+
 
 function ProductCard() {
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // This will trigger your saga as soon as component loads
+    dispatch(fetchProductRequest());
+  }, [dispatch]);
+
+  
   return (
     <Card style={{  }}>
       <Card.Img variant="top" src="holder.js/100px180" />

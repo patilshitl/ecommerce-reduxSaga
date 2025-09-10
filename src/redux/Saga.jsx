@@ -1,17 +1,24 @@
 import Api from './Api';
 import {call, put, takeEvery} from 'redux-saga/effects'
-import { fetchProductRequest,fetchProductSucess, fetchProductFailure } from './ProductSlice';
+import { fetchProductRequest,
+    fetchProductSucess, 
+    fetchProductFailure } 
+    from './ProductSlice';
 
 function* fetchProducts() {
     try {
         const response = yield call(Api.get, "/products");
+        console.log("API Response:", response.data);
+
         yield put(fetchProductSucess(response.data)); 
     }
     catch (error){
         yield put(fetchProductFailure(error.message))
+        console.log(error.message);
     }
 }
 
-function* watchProduct() {
+export default function* watchProduct() {
     yield takeEvery(fetchProductRequest.type, fetchProducts);
 }
+

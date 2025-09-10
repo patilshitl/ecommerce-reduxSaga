@@ -6,8 +6,10 @@ import ProductCard from './ProductCard'
 
 
 function Home() {
+  
   return (
     <>
+    
       <div className='home p-2' style={{width:"80%", height:"100vh"}}>
         <Container>
             <Row>
