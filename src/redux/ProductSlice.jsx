@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const saveProductsFromApi = JSON.parse(localStorage.getItem ("ProductsForEcommerce")) || [];
+
 const ProductSlice = createSlice({
 
     name:"products",
+
     initialState:{
-        items:[],
+        products:saveProductsFromApi,
         loading: false,
         error: null
     },
@@ -13,11 +16,13 @@ const ProductSlice = createSlice({
 
         fetchProductRequest: (state) => {
             state.loading = "true";
+            
         },
 
         fetchProductSucess: (state, action) => {
             state.loading = "false";
             state.items = action.payload;
+            localStorage.setItem("ProductsForEcommerce", JSON.stringify(state.products))
         },
 
         fetchProductFailure: (state, action) => {

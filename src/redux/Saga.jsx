@@ -9,6 +9,9 @@ function* fetchProducts() {
     try {
         const response = yield call(Api.get, "/products");
         console.log("API Response:", response.data);
+        
+        // const productDetails = response.data;
+        // console.log("title:", productDetails.title);
 
         yield put(fetchProductSucess(response.data)); 
     }
@@ -21,4 +24,5 @@ function* fetchProducts() {
 export default function* watchProduct() {
     yield takeEvery(fetchProductRequest.type, fetchProducts);
 }
+
 
