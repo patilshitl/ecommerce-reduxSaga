@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
     
-      <div className='home p-2' style={{width:"80%", height:"100vh"}}>
+      <div className='home p-2' style={{width:"80%"}}>
         <Container>
             <Row>
                 <Col><ProductCard /></Col>

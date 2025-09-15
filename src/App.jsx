@@ -6,6 +6,8 @@ import Sidebar from './components/Sidebar'
 import Home from './components/Home'
 import { Provider } from 'react-redux'
 import store from './redux/Store'
+import Wishlist from './components/Wishlist'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -13,14 +15,16 @@ function App() {
   return (
     <>
     <Provider store={store}>
-      <Header />
+      <BrowserRouter>
+        <Header />
 
-      <div className='d-flex'>
-        <Sidebar />
-        <Home />
-      </div>
-      
-      <Footer />
+        <div className='d-flex'>
+          <Sidebar />
+          <Home />
+        </div>
+        
+        <Footer />
+      </BrowserRouter>
     </Provider>
       
     </>

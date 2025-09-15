@@ -5,7 +5,7 @@ import { fetchProductRequest, fetchProductSucess, fetchProductFailure } from '..
 import { useEffect, useState } from 'react';
 
 
-function ProductCard() {
+function Wishlist() {
   
   const [list, setList] = useState();
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function ProductCard() {
   
   return (
   <>
-    { productDetails.map((items) => (
+    {/* { productDetails.map((items) => (
 
       <Card style={{  }}>
         <Card.Img variant="top" src={items.image} style={{width:"200px"}}/>
@@ -39,10 +39,12 @@ function ProductCard() {
         </Card.Footer>
       </Card>
 
-    )) }
+    )) } */}
+
+    <h1>this is wishlist</h1>
     </>
     
   );
 }
 
-export default ProductCard;
+export default Wishlist;
