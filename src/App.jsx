@@ -7,6 +7,7 @@ import Home from './components/Home'
 import { Provider } from 'react-redux'
 import store from './redux/Store'
 import Wishlist from './components/Wishlist'
+import Cart from './components/Cart'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -20,7 +21,11 @@ function App() {
 
         <div className='d-flex'>
           <Sidebar />
-          <Home />
+           <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
         </div>
         
         <Footer />
