@@ -8,7 +8,7 @@ import { fetchProductRequest,
 function* fetchProducts() {
     try {
         const response = yield call(Api.get, "/products");
-        console.log("API Response:", response.data);
+        // console.log("API Response:", response.data);
         
         // const productDetails = response.data;
         // console.log("title:", productDetails.title);
@@ -17,7 +17,7 @@ function* fetchProducts() {
     }
     catch (error){
         yield put(fetchProductFailure(error.message))
-        console.log(error.message);
+        // console.log(error.message);
     }
 }
 

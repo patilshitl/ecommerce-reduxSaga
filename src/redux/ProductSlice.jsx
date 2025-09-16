@@ -7,9 +7,10 @@ const ProductSlice = createSlice({
     name:"products",
 
     initialState:{
-        products:saveProducts,
+        items:saveProducts,
         loading: false,
-        error: null
+        error: null,
+        category: ""
     },
     
     reducers:{
@@ -30,6 +31,10 @@ const ProductSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+
+        fetchProductByCategory: (state, action) => {
+            state.category = action.payload;
+        }
     },
 
 })
@@ -38,6 +43,7 @@ export const {
         fetchProductRequest,
         fetchProductSucess,
         fetchProductFailure,
+        fetchProductByCategory,
     } = ProductSlice.actions
 
     
