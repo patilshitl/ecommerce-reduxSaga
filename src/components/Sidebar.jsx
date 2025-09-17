@@ -17,8 +17,9 @@ function Sidebar() {
 
             <li className='p-2' onClick={() => dispatch(fetchProductByCategory("women's clothing"))}>women's clothing</li>
 
-            <li className='p-2'>jewelery</li>
-            <li className='p-2'>electronics</li>
+            <li className='p-2' onClick={() => dispatch(fetchProductByCategory("jewelery"))}>jewelery</li>
+            
+            <li className='p-2' onClick={() => dispatch(fetchProductByCategory("electronics"))}>electronics</li>
         </ul>
       </div>
     </>

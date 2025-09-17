@@ -12,11 +12,11 @@ function Home() {
     
       <div className='home p-2' style={{width:"80%"}}>
         <Container>
-            <Row>
-                <Col><ProductCard /></Col>
-                <Col><ProductCard /></Col>
-                <Col><ProductCard /></Col>
-            </Row>
+            
+
+            <div className='row col-lg-12'>
+              <ProductCard />
+            </div>
         </Container>
        
             
