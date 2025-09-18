@@ -4,13 +4,15 @@ const saveProducts = JSON.parse(localStorage.getItem("ProductsForEcommerce")) ||
 
 const saveProductsInCart = JSON.parse(localStorage.getItem("CartProducts")) || [];
 
+
 const ProductSlice = createSlice({
   name: "products",
 
   initialState: {
     allProducts: saveProducts,   // <-- added this
     items: saveProducts,
-    cart: saveProductsInCart,
+    // cart: saveProductsInCart,
+    cart: Array.isArray(saveProductsInCart) ? saveProductsInCart : [],
     loading: false,
     error: null,
     category: ""
@@ -43,21 +45,61 @@ const ProductSlice = createSlice({
         );
       }
       state.category = category;
-    }
+    },
+
+    // addProductToCart: (state, action) => {
+    //     const product = action.payload;   // <-- get product from payload
+
+
+    //     // check if already in cart
+    //     const existCartProduct = state.cart.find((item) => item.id === product.id);
+
+    //     console.log("Adding product to cart:", product);  // <--- check here
+
+    //     if (existCartProduct) {
+    //         // increase quantity if exists
+    //         existCartProduct.quantity += 1;
+    //     } else {
+    //         // add new with quantity 1
+    //         state.cart.push({ ...product, quantity: 1 });
+    //     }
+
+    //     // save updated cart to localStorage
+    //     localStorage.setItem("CartProducts", JSON.stringify(state.cart));
+    // },
 
     addProductToCart: (state, action) => {
-      state.cart = action.payload; // to show exiting cart products
+        const product = action.payload;
 
-      const existCartProduct = state.cart.find((item) => item.id === product.id)
+        if (!Array.isArray(state.cart)) {
+            state.cart = [];
+        }
 
-      if(existCartProduct) {
-        existCartProduct.product +=1;
-      }
-      else{
-        state.cart.push({ ...product, quantity: 1 });
-      }
-      localStorage.setItem("CartProducts", JSON.stringify(action.payload));
-    }
+        // check if product already exists in cart
+        const existCartProduct = state.cart.find((item) => item.id === product.id);
+
+        if (existCartProduct) {
+            // increase quantity if exists
+            existCartProduct.quantity += 1;
+        } else {
+            // add new with quantity 1
+            state.cart.push({ ...product, quantity: 1 });
+        }
+
+        localStorage.setItem("CartProducts", JSON.stringify(state.cart));
+        },
+
+    fetchCartProductSucess: (state, action) => {
+      state.loading = false;
+        state.cart = JSON.parse(localStorage.getItem("CartProducts")) || [];
+    },
+
+    // countOffCartProduct: (state, action) => {
+    //     state.loading = false;
+    //     const cartProCount = JSON.parse(localStorage.getItem("CartProducts")) || [];
+    // }
+
+
   },
 });
 
@@ -67,6 +109,7 @@ export const {
   fetchProductFailure,
   fetchProductByCategory,
   addProductToCart,
+  fetchCartProductSucess,
 } = ProductSlice.actions;
 
 export default ProductSlice.reducer;

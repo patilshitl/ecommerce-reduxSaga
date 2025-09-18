@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductRequest, fetchProductSucess, fetchProductFailure } from '../redux/ProductSlice';
+import { fetchCartProductSucess } from '../redux/ProductSlice';
 import { useEffect, useState } from 'react';
 
 
@@ -11,23 +11,25 @@ function Cart() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProductRequest());
+    dispatch(fetchCartProductSucess());
   }, [dispatch]);  // to load saga on load
 
-  const productDetails = useSelector(((state) => state.products.items));
+  const cartProductDetails = useSelector(((state) => state.products.cart));
   // this is forming object not array which is causing error for mapping
 
   // const productsArray = [...productDetails.products];
 
-  console.log("products:" , productDetails);
+  console.log("products from cart:" , cartProductDetails);
   
   
   return (
   <>
-    {/* { productDetails.map((items) => (
+    { cartProductDetails.map((items) => (
 
       <Card style={{  }}>
-        <Card.Img variant="top" src={items.image} style={{width:"200px"}}/>
+        <div className="card-head">
+          <Card.Img variant="top" src={items.image}/>
+        </div>
         <Card.Body>
           <Card.Title>{items.title}</Card.Title>
           <Card.Text>{items.description}</Card.Text>
@@ -39,9 +41,9 @@ function Cart() {
         </Card.Footer>
       </Card>
 
-    )) } */}
+    )) }
 
-    <h1>this is cart</h1>
+    {/* <h1>this is cart</h1> */}
     </>
     
   );

@@ -69,6 +69,22 @@ button:focus-visible {
 
 
 .card button{
-      padding: 0px;
+      padding: 2%;
     font-size: 15px;
+}
+
+.card-img, .card-img-top{
+  width: 275px !important;
+    object-fit: contain;
+    height: 165px !important;
+}
+.card-title{
+  font-size: 1rem !important;
+}
+.card-body{
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }

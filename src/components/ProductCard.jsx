@@ -5,7 +5,7 @@ import { fetchProductRequest, fetchProductSucess, fetchProductFailure, addProduc
 import { useEffect, useState } from 'react';
 
 
-function ProductCard() {
+function ProductCard({product}) {
   
   const [list, setList] = useState();
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function ProductCard() {
           <Card.Text><b>Price:</b>{items.price}</Card.Text>
         </Card.Body>
         <Card.Footer className='d-flex align-items-center justify-content-between'>
-          <Button variant="primary" onClick={() => dispatch(addProductToCart(product))}>Add to Cart</Button>
+          <Button variant="primary" onClick={() => dispatch(addProductToCart(items))}>Add to Cart</Button>
           <Button variant="primary">Add to Wishlist</Button>
         </Card.Footer>
       </Card>

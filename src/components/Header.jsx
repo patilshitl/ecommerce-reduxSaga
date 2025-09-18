@@ -8,8 +8,12 @@ import Logo from '../assets/img/logo.png';
 import { Link } from "react-router-dom";
 
 function Header() {
+
+//   const cart = useSelector((state) => state.products.cart);
+// const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
-    <Navbar className=" justify-content-between header p-1 ">
+    <Navbar className=" justify-content-around header p-1 ">
       <div>
         <img src={Logo} alt="" srcset="" />
       </div>
