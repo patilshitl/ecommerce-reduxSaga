@@ -94,10 +94,10 @@ const ProductSlice = createSlice({
         state.cart = JSON.parse(localStorage.getItem("CartProducts")) || [];
     },
 
-    // countOffCartProduct: (state, action) => {
-    //     state.loading = false;
-    //     const cartProCount = JSON.parse(localStorage.getItem("CartProducts")) || [];
-    // }
+    countOffCartProduct: (state, action) => {
+        state.loading = false;
+        const cartProCount = JSON.parse(localStorage.getItem("CartProducts")) || [];
+    }
 
 
   },

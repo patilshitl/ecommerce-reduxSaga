@@ -6,11 +6,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Logo from '../assets/img/logo.png';
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 function Header() {
 
-//   const cart = useSelector((state) => state.products.cart);
-// const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+const cart = useSelector((state) => state.products.cart);
+const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+console.log(cartCount);
 
   return (
     <Navbar className=" justify-content-around header p-1 ">
@@ -33,7 +35,7 @@ function Header() {
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-heart-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
                     </svg>
-                    <h5 style={{color:"#fff"}}>0</h5>
+                    <h5 style={{color:"#fff"}}>{cartCount}</h5>
                 </div>
               </Link>
               <Link to="/cart" style={{ textDecoration: "none" }}>
