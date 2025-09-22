@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductRequest, fetchProductSucess, fetchProductFailure } from '../redux/ProductSlice';
+import { fetchWishlistProductSucess } from '../redux/ProductSlice';
 import { useEffect, useState } from 'react';
 
 
@@ -11,37 +11,35 @@ function Wishlist() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProductRequest());
+    dispatch(fetchWishlistProductSucess());
   }, [dispatch]);  // to load saga on load
 
-  const productDetails = useSelector(((state) => state.products.items));
+  const wishlistProductDetails = useSelector(((state) => state.products.wishlist));
   // this is forming object not array which is causing error for mapping
 
   // const productsArray = [...productDetails.products];
 
-  console.log("products:" , productDetails);
+  console.log("wishlist products:" , wishlistProductDetails);
   
   
   return (
   <>
-    {/* { productDetails.map((items) => (
+    { wishlistProductDetails.map((items) => (
 
-      <Card style={{  }}>
+      <Card style={{  }}  className="col-lg-3">
         <Card.Img variant="top" src={items.image} style={{width:"200px"}}/>
         <Card.Body>
           <Card.Title>{items.title}</Card.Title>
           <Card.Text>{items.description}</Card.Text>
-          <Card.Text><b>Price:</b>{items.price}</Card.Text>
+          <Card.Text><b>Price:$</b>{items.price}</Card.Text>
         </Card.Body>
         <Card.Footer className='d-flex align-items-center justify-content-between'>
-          <Button variant="primary">Add to Cart</Button>
-          <Button variant="primary">Add to Wishlist</Button>
+          <Button variant="primary">Remove</Button>
         </Card.Footer>
       </Card>
 
-    )) } */}
+    )) }
 
-    <h1>this is wishlist</h1>
     </>
     
   );
