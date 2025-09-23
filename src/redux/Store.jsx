@@ -35,7 +35,6 @@ const store = configureStore({
         products: ProductSlice
     },
     preloadedState: localStore(),
-    // lets store know that we are using saga
     middleware: (getdefaultMiddleware)=> getdefaultMiddleware({thunk:false}).concat(sagaMiddleware)
 })
 sagaMiddleware.run(watchProduct)

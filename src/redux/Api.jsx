@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "https://fakestoreapi.com", // ✅ base URL for all API requests
+  baseURL: "https://fakestoreapi.com", 
 });
 
 export default Api;

@@ -12,8 +12,6 @@ function Home() {
     
       <div className='home p-2' style={{width:"80%"}}>
         <Container>
-            
-
             <div className='row col-lg-12'>
               <ProductCard />
             </div>

@@ -10,18 +10,19 @@ import {useSelector} from "react-redux";
 
 function Header() {
 
-const cart = useSelector((state) => state.products.cart);
-const wishlist = useSelector((state) => state.products.wishlist);
+const cart = useSelector((state) => state.products.cart) || [];
+const wishlist = useSelector((state) => state.products.wishlist) || [];
 
-const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-console.log(cartCount);
-const wishlistCount = wishlist.reduce((total, item) => total + item.quantity, 0);
-console.log (wishlistCount);
+const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+const wishlistCount = wishlist.reduce((total, item) => total + (item.quantity || 1), 0);
+
 
   return (
     <Navbar className=" justify-content-around header p-1 ">
       <div>
-        <img src={Logo} alt="" srcset="" />
+        <Link to="/" style={{ textDecoration: "none" }}>
+            <img src={Logo} alt="" srcset="" />
+        </Link>
       </div>
       <div>
         <Form inline>
