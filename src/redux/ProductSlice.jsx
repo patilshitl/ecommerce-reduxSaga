@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const saveProducts = JSON.parse(localStorage.getItem("ProductsForEcommerce")) || [];
+// const saveProducts = JSON.parse(localStorage.getItem("ProductsForEcommerce")) || [];
 
-const saveProductsInCart = JSON.parse(localStorage.getItem("CartProducts")) || [];
+// const saveProductsInCart = JSON.parse(localStorage.getItem("CartProducts")) || [];
 
-const saveProductsInWishlist = JSON.parse(localStorage.getItem("WishlistProducts")) || [];
+// const saveProductsInWishlist = JSON.parse(localStorage.getItem("WishlistProducts")) || [];
 
 
 const ProductSlice = createSlice({
   name: "products",
 
   initialState: {
-    allProducts: saveProducts,   // <-- added this
-    items: saveProducts,
-    cart: Array.isArray(saveProductsInCart) ? saveProductsInCart : [],
-    wishlist: Array.isArray(saveProductsInWishlist) ? saveProductsInWishlist : [],
+    allProducts: [],   // <-- added this
+    items: [],
+    cart:[],
+    wishlist:[],
     loading: false,
     error: null,
     category: ""
@@ -29,7 +29,7 @@ const ProductSlice = createSlice({
       state.loading = false;
       state.allProducts = action.payload;  // keep master copy
       state.items = action.payload;        // show all at first
-      localStorage.setItem("ProductsForEcommerce", JSON.stringify(action.payload));
+      // localStorage.setItem("ProductsForEcommerce", JSON.stringify(action.payload));
     },
 
     fetchProductFailure: (state, action) => {
@@ -67,7 +67,7 @@ const ProductSlice = createSlice({
             state.cart.push({ ...product, quantity: 1 });
         }
 
-        localStorage.setItem("CartProducts", JSON.stringify(state.cart));
+        // localStorage.setItem("CartProducts", JSON.stringify(state.cart));
     },
 
     fetchCartProductSucess: (state, action) => {
@@ -102,12 +102,12 @@ const ProductSlice = createSlice({
             state.wishlist.push({ ...product, quantity: 1 });
         }
 
-        localStorage.setItem("WishlistProducts", JSON.stringify(state.wishlist));
+        // localStorage.setItem("WishlistProducts", JSON.stringify(state.wishlist));
         },
 
         fetchWishlistProductSucess: (state, action) => {
           state.loading = false;
-          state.wishlist = JSON.parse(localStorage.getItem("WishlistProducts")) || [];
+          state.wishlist = action.payload;
         },
 
 

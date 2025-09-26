@@ -4,29 +4,29 @@ import watchProduct from './Saga';
 import ProductSlice from './ProductSlice';
 
 
-const localStore = () => {
-    try{
-        const storedProductDetails = localStorage.getItem("ProductsForEcommerce");
-        if (storedProductDetails === null){
-            return undefined;
-        }
-        return {products : JSON.parse(storedProductDetails)};
-    }
-    catch(error){
-        console.log("sorry no products found");
-        return undefined;
-    }
-};
+// const localStore = () => {
+//     try{
+//         const storedProductDetails = localStorage.getItem("ProductsForEcommerce");
+//         if (storedProductDetails === null){
+//             return undefined;
+//         }
+//         return {products : JSON.parse(storedProductDetails)};
+//     }
+//     catch(error){
+//         console.log("sorry no products found");
+//         return undefined;
+//     }
+// };
 
-const savedState = (state) => {
-    try{
-        const storeList = JSON.stringify(state.products)
-        localStorage.setItem("ProductsForEcommerce", storeList)
-    }
-    catch(error){
-        console.log("state is undefined")
-    }
-}
+// const savedState = (state) => {
+//     try{
+//         const storeList = JSON.stringify(state.products)
+//         localStorage.setItem("ProductsForEcommerce", storeList)
+//     }
+//     catch(error){
+//         console.log("state is undefined")
+//     }
+// }
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -34,14 +34,19 @@ const store = configureStore({
     reducer:{
         products: ProductSlice
     },
+<<<<<<< HEAD
     preloadedState: localStore(),
+=======
+    // preloadedState: localStore(),
+    // lets store know that we are using saga
+>>>>>>> 08b9ee7 (26th sep)
     middleware: (getdefaultMiddleware)=> getdefaultMiddleware({thunk:false}).concat(sagaMiddleware)
 })
 sagaMiddleware.run(watchProduct)
 
-store.subscribe(() => {
-  savedState(store.getState());
-});
+// store.subscribe(() => {
+//   savedState(store.getState());
+// });
 
 
 export default store;

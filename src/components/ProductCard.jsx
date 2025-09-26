@@ -5,7 +5,7 @@ import { fetchProductRequest, addProductToCart, addProductToWishlist } from '../
 import { useEffect, useState } from 'react';
 
 
-function ProductCard({product}) {
+function ProductCard() {
   
   // const [list, setList] = useState();
   const dispatch = useDispatch();

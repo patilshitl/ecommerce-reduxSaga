@@ -7,18 +7,14 @@ import { useEffect, useState } from 'react';
 
 function Wishlist() {
   
-  const [list, setList] = useState();
-  const dispatch = useDispatch();
+  // const [list, setList] = useState();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchWishlistProductSucess());
-  }, [dispatch]);  // to load saga on load
+  // useEffect(() => {
+  //   dispatch(fetchWishlistProductSucess());
+  // }, [dispatch]); 
 
   const wishlistProductDetails = useSelector(((state) => state.products.wishlist));
-  // this is forming object not array which is causing error for mapping
-
-  // const productsArray = [...productDetails.products];
-
   console.log("wishlist products:" , wishlistProductDetails);
   
   
