@@ -34,12 +34,8 @@ const store = configureStore({
     reducer:{
         products: ProductSlice
     },
-<<<<<<< HEAD
-    preloadedState: localStore(),
-=======
     // preloadedState: localStore(),
     // lets store know that we are using saga
->>>>>>> 08b9ee7 (26th sep)
     middleware: (getdefaultMiddleware)=> getdefaultMiddleware({thunk:false}).concat(sagaMiddleware)
 })
 sagaMiddleware.run(watchProduct)

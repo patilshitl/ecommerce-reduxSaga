@@ -21,11 +21,7 @@ const wishlistCount = wishlist.reduce((total, item) => total + (item.quantity ||
     <Navbar className=" justify-content-around header p-1 ">
       <div>
         <Link to="/" style={{ textDecoration: "none" }}>
-<<<<<<< HEAD
-            <img src={Logo} alt="" srcset="" />
-=======
           <img src={Logo} alt="" srcset="" />
->>>>>>> 08b9ee7 (26th sep)
         </Link>
       </div>
       <div>

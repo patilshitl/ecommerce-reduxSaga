@@ -70,7 +70,7 @@ const ProductSlice = createSlice({
         // localStorage.setItem("CartProducts", JSON.stringify(state.cart));
     },
 
-    fetchCartProductSucess: (state, action) => {
+    fetchCartProductSucess: (state, ) => {
       state.loading = false;
         state.cart = JSON.parse(localStorage.getItem("CartProducts")) || [];
     },
